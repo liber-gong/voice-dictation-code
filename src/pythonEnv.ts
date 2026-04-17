@@ -56,7 +56,7 @@ export async function ensurePythonReady(
 
   try {
     await vscode.window.withProgress(
-      { location: vscode.ProgressLocation.Notification, title: 'Getting Voice Dictation ready…' },
+      { location: vscode.ProgressLocation.Notification, title: 'Getting Voice Dictation ready' },
       async (progress) => {
         if (!await venvExists(venvDir)) {
           progress.report({ message: 'this only takes a moment' })
