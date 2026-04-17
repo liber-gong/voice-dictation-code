@@ -1,0 +1,119 @@
+{
+  "name": "voice-dictation-code",
+  "displayName": "Voice Dictation - Code",
+  "icon": "assets/icon.png",
+  "description": "Streaming speech-to-text (ASR) voice dictation for Visual Studio Code.",
+  "keywords": [
+    "asr",
+    "speech-to-text",
+    "stt",
+    "voice",
+    "dictation",
+    "transcription",
+    "speech recognition"
+  ],
+  "version": "0.0.1",
+  "publisher": "lanqun520",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liber-gong/voice-dictation-code"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "voice-dictation-code.dictate",
+        "title": "Voice Dictation: Dictate (Default Mode)"
+      },
+      {
+        "command": "voice-dictation-code.dictate-stream",
+        "title": "Voice Dictation: Dictate (Stream Mode)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "voice-dictation-code.dictate",
+        "key": "ctrl+alt+v",
+        "mac": "ctrl+cmd+v"
+      },
+      {
+        "command": "voice-dictation-code.dictate-stream",
+        "key": "ctrl+alt+shift+v",
+        "mac": "ctrl+cmd+shift+v"
+      }
+    ],
+    "configuration": {
+      "title": "Voice Dictation - Code",
+      "properties": {
+        "voice-dictation-code.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key / access token used for authentication.",
+          "order": 0
+        },
+        "voice-dictation-code.appId": {
+          "type": "string",
+          "default": "",
+          "description": "App ID, if the service requires a paired App ID + Access Token.",
+          "order": 1
+        },
+        "voice-dictation-code.accessToken": {
+          "type": "string",
+          "default": "",
+          "description": "Access token, paired with App ID when required.",
+          "order": 2
+        },
+        "voice-dictation-code.model": {
+          "type": "string",
+          "default": "",
+          "description": "Model / resource identifier. Leave empty to use the built-in default.",
+          "order": 3
+        },
+        "voice-dictation-code.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "WebSocket endpoint URL. Leave empty to use the built-in default.",
+          "order": 4
+        },
+        "voice-dictation-code.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Path to the Python interpreter used for microphone capture.",
+          "order": 5
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "pnpm run check-types && node esbuild.js",
+    "compile:production": "pnpm run check-types && node esbuild.js --production",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "node --import tsx --test src/test/*.test.ts",
+    "vscode:prepublish": "pnpm run compile:production",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@types/vscode": "^1.80.0",
+    "@types/ws": "^8.5.10",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.1.3",
+    "typescript-eslint": "^8.0.0"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
