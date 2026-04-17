@@ -16,3 +16,8 @@ pnpm install
 ```
 
 F5 to launch.
+
+## Acknowledgements
+
+Inspired by [Claude Voice](https://marketplace.visualstudio.com/items?itemName=jsaluja.claude-voice).
+
