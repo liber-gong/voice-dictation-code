@@ -26,7 +26,7 @@ export const bytedanceProvider: AsrProvider = {
       request: {
         model_name: 'bigmodel',
         enable_itn: true,
-        enable_punc: true,
+        enable_punc: false,
         enable_ddc: true,
         enable_nonstream: true,
         show_utterances: true,

@@ -48,7 +48,7 @@ describe('bytedance buildInitPayload', () => {
     }
     assert.deepStrictEqual(p.audio, { format: 'pcm', codec: 'raw', rate: SAMPLE_RATE, bits: 16, channel: 1 })
     assert.equal(p.request.enable_itn, true)
-    assert.equal(p.request.enable_punc, true)
+    assert.equal(p.request.enable_punc, false)
     assert.equal(p.request.enable_ddc, true)
     assert.equal(p.request.enable_nonstream, true)
     assert.equal(p.request.show_utterances, true)
